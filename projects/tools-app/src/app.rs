@@ -5,6 +5,8 @@ use leptos_router::*;
 use crate::components::parent_child::parent_child_home::ParentChildHome;
 use crate::components::parent_child::parent_child_write_signal::Parent as ParentWriteSignal;
 use crate::components::parent_child::parent_child_callback::Parent as ParentCallback;
+use crate::components::parent_child::parent_child_closure_instead_of_callback::Parent as ParentClosureInsteadOfCallBack;
+use crate::components::color_tool::color_home::ColorHome;
 
 #[component]
 pub fn Container(children: Children) -> impl IntoView {
@@ -39,6 +41,9 @@ pub fn NavBar() -> impl IntoView {
                 <li class="menu-item">
                     <a href="/parent-child">"Parent Child"</a>
                 </li>
+                <li class="menu-item">
+                    <a href="/color-tool">"Color tool"</a>
+                </li>
             </ul>
         </nav>
     }
@@ -59,6 +64,10 @@ pub fn Content() -> impl IntoView {
                     <Route path="/parent-child" view=ParentChildHome>
                         <Route path="write-signal" view=ParentWriteSignal />
                         <Route path="callback" view=ParentCallback />
+                        <Route path="closure-instead-of-callback" view=ParentClosureInsteadOfCallBack />
+                        <Route path="" view=|| view! {<p>"Click an example link"</p>} />
+                    </Route>
+                    <Route path="/color-tool" view=ColorHome>
                         <Route path="" view=|| view! {<p>"Click an example link"</p>} />
                     </Route>
                     <Route path="/*any" view=NotFound/>
